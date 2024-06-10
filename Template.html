@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML Template with Button</title>
+    <script>
+        // Объявление функции loadScript(), которая будет загружать скрипт по клику на кнопку.
+        function loadScript() {
+            console.log('Script loading...');
+            // Создание нового элемента <script> с помощью JavaScript.
+            var script = document.createElement('script');
+            // Устанавливает атрибут src для элемента <script>, указывая путь к файлу скрипта.
+            script.src = 'testFunction.js';
+            // Устанавливает обработчик события onload для элемента <script>. Этот обработчик вызывается, когда скрипт успешно загружен.
+            script.onload = function() {
+                // Выводит сообщение в консоль браузера о успешной загрузке скрипта.
+                console.log('Script loaded successfully');
+                // После загрузки скрипта вызываем testFunction.
+                testFunction();
+            };
+            // Устанавливает обработчик события onerror для элемента <script>. Этот обработчик вызывается, если произошла ошибка при загрузке скрипта.
+            script.onerror = function() {
+                // Выводит сообщение об ошибке в консоль браузера, если скрипт не был загружен.
+                console.error('Error loading script');
+            };
+            // Добавляет созданный элемент <script> в конец списка элементов внутри тега <head> текущего HTML документа, чтобы браузер мог загрузить и выполнить скрипт.
+            document.head.appendChild(script);
+        }
+
+        function displayResult(resultPow, resultRandom) {
+            // Находим элемент с id "result" и устанавливаем его текстовое содержимое равным результатам.
+            document.getElementById('result').innerText = 'Result of customPow(2, 3): ' + resultPow + '\nResult of generateRandomNumber(1, 100): ' + resultRandom;
+        }
+    </script>
+</head>
+<body>
+    <!-- Элемент для вывода результата -->
+    <div id="result"></div>
+
+    <!-- Вызываем loadScript по клику на кнопку -->
+    <button onclick="loadScript()">Click me to load script</button>
+</body>
+</html>
